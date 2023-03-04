@@ -54,3 +54,7 @@
 .draggable--two {
 	background-color: #BE6DB7;
 }
+
+.dragging {
+	opacity: 0.4;
+}

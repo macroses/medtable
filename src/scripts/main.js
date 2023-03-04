@@ -3,6 +3,7 @@ const tableDoctorCols = document.querySelectorAll('.table__doctor-col');
 
 function handleDragStart() {
   this.classList.add('dragging');
+
 }
 
 function handleDragEnd() {
@@ -13,6 +14,7 @@ function handleDragOver(e) {
   e.preventDefault();
   const afterElement = getDragAfterElement(this, e.clientY);
   const draggingElement = document.querySelector('.dragging');
+  draggingElement.classList.add('timeline-dragover');
   if (afterElement == null) {
     this.appendChild(draggingElement);
   } else {
@@ -78,12 +80,10 @@ draggables.forEach((draggable) => {
   draggable.addEventListener('drag', handleDrag);
 });
 
-tableDoctorCols.forEach((table) => {
-  table.addEventListener('dragover', handleDragOver);
-});
-
 tableDoctorCols.forEach((col) => {
+  col.addEventListener('dragover', handleDragOver);
   col.addEventListener('drop', handleDrop);
   col.addEventListener('dragenter', handleDragEnter);
   col.addEventListener('dragleave', handleDragLeave);
 });
+
