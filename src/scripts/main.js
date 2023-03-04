@@ -1,9 +1,13 @@
 const draggables = document.querySelectorAll('.draggable');
 const tableDoctorCols = document.querySelectorAll('.table__doctor-col');
+const blankCanvas = document.createElement('canvas'); // удаляем тень для перетаскиваемого элемента
+blankCanvas.style.opacity = '0';
 
-function handleDragStart() {
+function handleDragStart(event) {
   this.classList.add('dragging');
-
+  // сбросил позицию, чтобы было лучше видно, куда тащим элемент
+  event.dataTransfer.setDragImage(blankCanvas, 0, 0);
+  document.body.appendChild(blankCanvas);
 }
 
 function handleDragEnd() {
@@ -12,14 +16,40 @@ function handleDragEnd() {
 
 function handleDragOver(e) {
   e.preventDefault();
+
   const afterElement = getDragAfterElement(this, e.clientY);
   const draggingElement = document.querySelector('.dragging');
-  draggingElement.classList.add('timeline-dragover');
   if (afterElement == null) {
     this.appendChild(draggingElement);
   } else {
     this.insertBefore(draggingElement, afterElement);
   }
+
+  checkIntersection()
+}
+
+function checkIntersection () {
+  // Check for intersections
+  const draggingElement = document.querySelector('.dragging');
+  const draggingRect = draggingElement.getBoundingClientRect();
+
+  draggables.forEach((element) => {
+    if (element !== draggingElement) {
+      const elementRect = element.getBoundingClientRect();
+
+      if (
+        draggingRect.top < elementRect.bottom &&
+        draggingRect.bottom > elementRect.top &&
+        draggingRect.left < elementRect.right &&
+        draggingRect.right > elementRect.left
+      ) {
+        draggingElement.classList.add('intersected');
+        console.log('Пересечение элементов!');
+      } else {
+        draggingElement.classList.remove('intersected');
+      }
+    }
+  });
 }
 
 function handleDrop(e) {
