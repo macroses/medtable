@@ -9,5 +9,6 @@ export default defineConfig({
       ],
     },
   },
-  root: 'src'
+  root: 'src',
+  base: '/medtable/'
 });
