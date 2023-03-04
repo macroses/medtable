@@ -19,6 +19,12 @@ function handleDragOver(e) {
 
   const afterElement = getDragAfterElement(this, e.clientY);
   const draggingElement = document.querySelector('.dragging');
+  const dropRect = this.getBoundingClientRect();
+
+  const newTop = Math.round((e.clientY - dropRect.top) / 10) * 10 + 1;
+
+  draggingElement.style.top = `${newTop}px`;
+
   if (afterElement == null) {
     this.appendChild(draggingElement);
   } else {
@@ -45,6 +51,17 @@ function checkIntersection () {
       ) {
         draggingElement.classList.add('intersected');
         console.log('Пересечение элементов!');
+
+
+        const distanceFromTop = draggingRect.top - elementRect.top;
+        const distanceFromBottom = elementRect.bottom - draggingRect.bottom;
+
+
+        if (distanceFromTop < distanceFromBottom) {
+          draggingElement.style.top = `${elementRect.top}px`;
+        } else {
+          draggingElement.style.top = `${elementRect.bottom - draggingRect.height}px`;
+        }
       } else {
         draggingElement.classList.remove('intersected');
       }
