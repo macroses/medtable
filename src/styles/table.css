@@ -38,12 +38,17 @@
 	background-image: repeating-linear-gradient( to bottom, transparent 0 9px, #f1f1f1 0px 10px );
 }
 
+.active-hour {
+	background-color: rgba(0,0,0, .05);
+}
+
 /* draggable block */
 .draggable {
 	position: absolute;
 	left: 2px;
 	width: calc(100% - 4px);
 	border-radius: 2px;
+	transform: translateY(1px);
 	height: calc(var(--draggable-block-height) - 2px);
 }
 
@@ -53,6 +58,10 @@
 
 .draggable--two {
 	background-color: #BE6DB7;
+}
+
+.draggable--three {
+	background-color: #00beff;
 }
 
 .dragging {

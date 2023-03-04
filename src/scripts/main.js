@@ -1,10 +1,13 @@
 const draggables = document.querySelectorAll('.draggable');
 const tableDoctorCols = document.querySelectorAll('.table__doctor-col');
+const tableDoctorHours = document.querySelectorAll('.table__doctor-hour');
 const blankCanvas = document.createElement('canvas'); // удаляем тень для перетаскиваемого элемента
 blankCanvas.style.opacity = '0';
 
+
 function handleDragStart(event) {
   this.classList.add('dragging');
+
   // сбросил позицию, чтобы было лучше видно, куда тащим элемент
   // теперь снепшот перетаскиваемого элемента не виден
   event.dataTransfer.setDragImage(blankCanvas, 0, 0);
@@ -51,13 +54,32 @@ function checkIntersection () {
       ) {
         draggingElement.classList.add('intersected');
         console.log('Пересечение элементов!');
-
       } else {
         draggingElement.classList.remove('intersected');
       }
     }
   });
+
+  const tableDoctorHours = document.querySelectorAll('.table__doctor-hour');
+  tableDoctorHours.forEach((element) => {
+    const hour = element.getAttribute('data-hour');
+    const elementRect = element.getBoundingClientRect();
+
+    if (draggingRect.top < elementRect.bottom && draggingRect.top >= elementRect.top) {
+      const activeHours = document.querySelectorAll(`.table__doctor-hour[data-hour='${hour}']`);
+      activeHours.forEach((activeHour) => {
+        activeHour.classList.add('active-hour');
+      });
+    } else {
+      const activeHours = document.querySelectorAll(`.table__doctor-hour[data-hour='${hour}'].active-hour`);
+      activeHours.forEach((activeHour) => {
+        activeHour.classList.remove('active-hour');
+      });
+    }
+  });
 }
+
+
 
 function handleDrop(e) {
   const dropRect = this.getBoundingClientRect();
@@ -69,6 +91,10 @@ function handleDrop(e) {
   tableDoctorCols.forEach((col) => {
     col.classList.remove('active');
   });
+
+  tableDoctorHours.forEach((hour) => {
+    hour.classList.remove('active-hour')
+  })
 
   e.preventDefault();
 }
@@ -123,4 +149,3 @@ tableDoctorCols.forEach((col) => {
   col.addEventListener('dragenter', handleDragEnter);
   col.addEventListener('dragleave', handleDragLeave);
 });
-
