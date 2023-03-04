@@ -6,6 +6,7 @@ blankCanvas.style.opacity = '0';
 function handleDragStart(event) {
   this.classList.add('dragging');
   // сбросил позицию, чтобы было лучше видно, куда тащим элемент
+  // теперь снепшот перетаскиваемого элемента не виден
   event.dataTransfer.setDragImage(blankCanvas, 0, 0);
   document.body.appendChild(blankCanvas);
 }
@@ -35,7 +36,6 @@ function handleDragOver(e) {
 }
 
 function checkIntersection () {
-  // Check for intersections
   const draggingElement = document.querySelector('.dragging');
   const draggingRect = draggingElement.getBoundingClientRect();
 
@@ -52,16 +52,6 @@ function checkIntersection () {
         draggingElement.classList.add('intersected');
         console.log('Пересечение элементов!');
 
-
-        const distanceFromTop = draggingRect.top - elementRect.top;
-        const distanceFromBottom = elementRect.bottom - draggingRect.bottom;
-
-
-        if (distanceFromTop < distanceFromBottom) {
-          draggingElement.style.top = `${elementRect.top}px`;
-        } else {
-          draggingElement.style.top = `${elementRect.bottom - draggingRect.height}px`;
-        }
       } else {
         draggingElement.classList.remove('intersected');
       }
