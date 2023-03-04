@@ -1,0 +1,56 @@
+.table {
+	--draggable-block-height: 0;
+	width: 100%;
+}
+
+.table__content {
+	display: flex;
+	overflow: auto;
+	padding: 1px;
+}
+
+.table__hours {
+	display: grid;
+	grid-auto-rows: 120px;
+	width: 80px;
+}
+
+.table__hours-value {
+	box-shadow: -1px 0 0 1px lightgray;
+	padding: 10px;
+}
+
+.table__doctors {
+	display: flex;
+	gap: 1px;
+}
+
+.table__doctor-col {
+	width: 160px;
+	display: grid;
+	grid-auto-rows: 120px;
+	box-shadow: 0 0 0 1px lightgray;
+	position: relative;
+}
+
+.table__doctor-hour {
+	box-shadow: 0 0 0 1px lightgray;
+	background-image: repeating-linear-gradient( to bottom, transparent 0 9px, #f1f1f1 0px 10px );
+}
+
+/* draggable block */
+.draggable {
+	position: absolute;
+	left: 2px;
+	width: calc(100% - 4px);
+	border-radius: 2px;
+	height: calc(var(--draggable-block-height) - 2px);
+}
+
+.draggable--one {
+	background-color: gold;
+}
+
+.draggable--two {
+	background-color: #BE6DB7;
+}
