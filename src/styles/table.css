@@ -50,6 +50,10 @@
 	border-radius: 2px;
 	transform: translateY(1px);
 	height: calc(var(--draggable-block-height) - 2px);
+	cursor: pointer;
+	font-size: 10px;
+
+	padding: 2px;
 }
 
 .draggable--one {
@@ -57,11 +61,15 @@
 }
 
 .draggable--two {
-	background-color: #BE6DB7;
+	background-color: #ffbbf7;
 }
 
 .draggable--three {
-	background-color: #00beff;
+	background-color: #8ce0ff;
+}
+
+.draggable--four {
+	background-color: #ffca7b;
 }
 
 .dragging {
@@ -71,4 +79,48 @@
 
 .intersected {
 	background-color: red;
+}
+
+.table__head {
+	display: flex;
+	gap: 1px;
+}
+
+.table__info {
+	width: 160px;
+	box-shadow: 0 0 0 1px lightgray;
+	padding: 6px;
+	display: flex;
+	flex-direction: column;
+}
+
+.table__info--empty {
+	width: 80px;
+}
+
+.table__info-name {
+	white-space: nowrap;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.table__type-list {
+	font-style: italic;
+	font-size: 11px;
+	flex-grow: 1;
+}
+
+.table__room-num {
+	font-size: 11px;
+	font-weight: bolder;
+}
+
+.table__type-item {
+	white-space: nowrap;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }

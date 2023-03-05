@@ -13,6 +13,32 @@
 <!-- при перемещении блока должны получать вертикальную колонку (врача) и атрибут часа (data-hour) -->
     <div class="wrapper">
       <div class="table">
+        <div class="table__head">
+          <div class="table__info table__info--empty"></div>
+          <div class="table__info">
+            <div class="table__info-name" title="Полный текст">Иванов Иван Иванович Иваныч Иван</div>
+            <ul class="table__type-list">
+              <li class="table__type-item" title="Полный текст">Терапевт</li>
+              <li class="table__type-item" title="Полный текст">Невролог</li>
+              <li class="table__type-item" title="Полный текст">Уролог</li>
+            </ul>
+            <div class="table__room-num">Каб. 202123</div>
+          </div>
+          <div class="table__info">
+            <div class="table__info-name" title="Полный текст">Татьянова Татьяна Татьяновна</div>
+            <ul class="table__type-list">
+              <li class="table__type-item" title="Полный текст">Врач головных болей и левого уха</li>
+            </ul>
+            <div class="table__room-num">Каб. 2</div>
+          </div>
+          <div class="table__info">
+            <div class="table__info-name" title="Полный текст">АБВ</div>
+            <ul class="table__type-list">
+              <li class="table__type-item" title="Полный текст">Специалист по всем болезням</li>
+            </ul>
+            <div class="table__room-num">Каб. 1</div>
+          </div>
+        </div>
         <div class="table__content">
           <div class="table__hours">
             <div class="table__hours-value" data-hour="0">0:00</div>
@@ -25,7 +51,6 @@
           </div>
           <div class="table__doctors">
             <div class="table__doctor-col">
-                <!-- Высота равна количеству пятиминуток * 10 -->
               <div class="draggable draggable--one" draggable="true" style="--draggable-block-height: 50px;">1</div>
               <div class="table__doctor-hour" data-hour="0"></div>
               <div class="table__doctor-hour" data-hour="1"></div>
@@ -36,7 +61,30 @@
               <div class="table__doctor-hour" data-hour="6"></div>
             </div>
             <div class="table__doctor-col">
-              <div class="draggable draggable--two" draggable="true" style="--draggable-block-height: 180px; ">1</div>
+              <div class="draggable draggable--two" draggable="true" style="--draggable-block-height: 180px; top: 0">
+                <div class="task">
+                  <div class="task__work-type">Лечение уха</div>
+                  <div class="task__room-num">Каб. 202</div>
+                  <div class="task__payment-type">Наличные</div>
+                  <div class="task__author">Авторов Таск Криэйтович</div>
+                  <div class="task__create-time">02:15</div>
+                  <ul class="task__statuses-list">
+                    <li class="task__status task__status--red"></li>
+                    <li class="task__status task__status--green"></li>
+                    <li class="task__status task__status--blue"></li>
+                    <li class="task__status task__status--yellow"></li>
+                    <li class="task__status task__status--purple"></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="draggable draggable--four" draggable="true" style="--draggable-block-height: 10px; top: 180px">
+                <div class="task">
+                  <ul class="task__statuses-list">
+                    <li class="task__status task__status--red"></li>
+                    <li class="task__status task__status--purple"></li>
+                  </ul>
+                </div>
+              </div>
               <div class="table__doctor-hour" data-hour="0"></div>
               <div class="table__doctor-hour" data-hour="1"></div>
               <div class="table__doctor-hour" data-hour="2"></div>

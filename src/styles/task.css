@@ -1,0 +1,65 @@
+.task {
+	position: relative;
+	height: 100%;
+}
+
+.task__person-doctor {
+	white-space: nowrap;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 10px;
+}
+
+.icon:after {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 8px;
+	height: 8px;
+	border: 1px solid #fff;
+}
+
+.icon--red:after {
+	background: red;
+}
+
+.icon--green:after {
+	background: green;
+}
+
+.task__work-type {
+	font-weight: bold;
+}
+
+.task__statuses-list {
+	position: absolute;
+	bottom: -2px;
+	right: -2px;
+	overflow: hidden;
+	display: flex;
+	gap: 1px;
+	border-bottom-right-radius: 2px;
+}
+
+.task__status {
+	width: 8px;
+	height: 8px;
+	box-shadow: 0 0 0 1px #fff;
+}
+
+.task__status--blue {
+	background-color: blue;
+}
+.task__status--green {
+	background-color: green;
+}
+.task__status--red {
+	background-color: red;
+}
+.task__status--purple {
+	background-color: purple;
+}
+.task__status--yellow {
+	background-color: yellow;
+}
