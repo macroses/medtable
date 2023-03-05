@@ -6,7 +6,6 @@ blankCanvas.style.opacity = '0';
 
 function handleDragStart(event) {
   this.classList.add('dragging');
-
   // сбросил позицию, чтобы было лучше видно, куда тащим элемент
   // теперь снепшот перетаскиваемого элемента не виден
   event.dataTransfer.setDragImage(blankCanvas, 0, 0);
@@ -58,8 +57,6 @@ function checkIntersection (draggingElement) {
     }
   })
 }
-
-
 
 function handleDrop(e) {
   const dropRect = this.getBoundingClientRect();
