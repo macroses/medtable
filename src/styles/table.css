@@ -93,6 +93,10 @@
 .table__head {
 	display: flex;
 	gap: 1px;
+	position: sticky;
+	top: 0;
+	background: #fff;
+	z-index: 20;
 }
 
 .table__info {

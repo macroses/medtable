@@ -75,7 +75,7 @@ function handleDrop(e) {
   e.preventDefault();
 }
 
-function handleDragEnter(e) {
+function handleDragEnter() {
   this.classList.add('active');
 }
 
