@@ -1,5 +1,6 @@
 const draggables = document.querySelectorAll('.draggable');
 const tableDoctorCols = document.querySelectorAll('.table__doctor-col');
+const tableDoctorHours = document.querySelectorAll('.table__doctor-hour');
 const blankCanvas = document.createElement('canvas'); // удаляем тень для перетаскиваемого элемента
 blankCanvas.style.opacity = '0';
 
@@ -14,6 +15,12 @@ function handleDragStart(event) {
 
 function handleDragEnd() {
   this.classList.remove('dragging');
+
+  draggables.forEach(draggable => {
+    if(draggable.querySelector('.dragging-tooltip')) {
+      draggable.querySelector('.dragging-tooltip').classList.remove('active')
+    }
+  })
 }
 
 function handleDragOver(e) {
@@ -56,18 +63,31 @@ function checkIntersection (draggingElement) {
       }
     }
   })
+
+  // проверка часа
+  let hour = null;
+  tableDoctorHours.forEach((hourElement) => {
+    const hourRect = hourElement.getBoundingClientRect();
+
+    if (
+      draggingRect.top >= hourRect.top &&
+      draggingRect.top < hourRect.bottom
+    ) {
+      hour = hourElement.getAttribute('data-hour');
+    }
+  });
+
+  if (hour !== null) {
+    draggingElement.querySelector('.dragging-tooltip').classList.add('active')
+    draggingElement.querySelector('.dragging-tooltip').innerHTML = hour;
+  }
 }
 
 function handleDrop(e) {
   const dropRect = this.getBoundingClientRect();
-  let newTop = Math.round((e.clientY - dropRect.top) / 10) * 10 + 1;
-
   const draggingElement = document.querySelector('.dragging');
 
-  if (newTop < 0) {
-    newTop = 0;
-  }
-
+  let newTop = Math.round((e.clientY - dropRect.top) / 10) * 10 + 1;
   draggingElement.style.top = `${newTop}px`;
 
   tableDoctorCols.forEach((col) => {

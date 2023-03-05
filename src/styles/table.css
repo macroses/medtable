@@ -61,6 +61,7 @@
 	height: calc(var(--draggable-block-height) - 2px);
 	cursor: pointer;
 	font-size: 10px;
+	z-index: 20;
 
 	padding: 2px;
 }
@@ -83,7 +84,7 @@
 
 .dragging {
 	opacity: 0.9;
-	z-index: 10;
+	z-index: 21;
 }
 
 .intersected {
