@@ -6,8 +6,6 @@ blankCanvas.style.opacity = '0';
 
 function handleDragStart(event) {
   this.classList.add('dragging');
-
-  // сбросил позицию, чтобы было лучше видно, куда тащим элемент
   // теперь снепшот перетаскиваемого элемента не виден
   event.dataTransfer.setDragImage(blankCanvas, 0, 0);
   document.body.appendChild(blankCanvas);
@@ -22,11 +20,16 @@ function handleDragOver(e) {
 
   const afterElement = getDragAfterElement(this, e.clientY);
   const draggingElement = document.querySelector('.dragging');
-  const dropRect = this.getBoundingClientRect();
-
-  let newTop = Math.round((e.clientY - dropRect.top) / 10) * 10 + 1;
-
-  draggingElement.style.top = `${newTop}px`;
+  // const dropRect = this.getBoundingClientRect();
+  //
+  // let newTop = Math.round((e.clientY - dropRect.top) / 10) * 10 + 1;
+  //
+  // if (newTop < 0) {
+  //   newTop = 0
+  //   return false
+  // }
+  //
+  // draggingElement.style.top = `${newTop}px`;
 
   if (afterElement === null) {
     this.appendChild(draggingElement);
@@ -77,6 +80,24 @@ function handleDrag(e) {
   draggingElement.style.top = `${newTop}px`;
 }
 
+function handleDrop(e) {
+  const dropRect = this.getBoundingClientRect();
+  let newTop = Math.round((e.clientY - dropRect.top) / 10) * 10 + 1;
+
+  if (newTop < 0) {
+    newTop = 0
+  }
+
+  const draggingElement = document.querySelector('.dragging');
+  draggingElement.style.top = `${newTop}px`;
+
+  tableDoctorCols.forEach((col) => {
+    col.classList.remove('active');
+  });
+
+  e.preventDefault();
+}
+
 function getDragAfterElement(container, y) {
   const draggableElements = [
     ...container.querySelectorAll('.draggable:not(.dragging)'),
@@ -106,5 +127,6 @@ draggables.forEach((draggable) => {
 tableDoctorCols.forEach((col) => {
   col.addEventListener('dragover', handleDragOver);
   col.addEventListener('dragenter', handleDragEnter);
+  col.addEventListener('drop', handleDrop);
   col.addEventListener('dragleave', handleDragLeave);
 });

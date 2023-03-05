@@ -1,12 +1,10 @@
 .table {
 	--draggable-block-height: 0;
-	width: 100%;
-	overflow: auto;
+	width: fit-content;
 }
 
 .table__content {
 	display: flex;
-	padding: 1px;
 }
 
 .table__hours {
@@ -15,32 +13,33 @@
 	min-width: 80px;
 	position: sticky;
 	background-color: #fff;
-	box-shadow: 1px 0 0 1px lightgray;
+	box-shadow: 1px 0 0 1px #ebebeb;
 	left: 0;
 	top: 0;
 	z-index: 1;
 }
 
 .table__hours-value {
-	box-shadow: -1px 0 0 1px lightgray;
+	box-shadow: -1px 0 0 1px #ebebeb;
 	padding: 10px;
 }
 
 .table__doctors {
 	display: flex;
 	gap: 1px;
+	padding-left: 1px;
 }
 
 .table__doctor-col {
 	width: 160px;
 	display: grid;
 	grid-auto-rows: 120px;
-	box-shadow: 0 0 0 1px lightgray;
+	box-shadow: 0 0 0 1px #ebebeb;
 	position: relative;
 }
 
 .table__doctor-hour {
-	box-shadow: 0 0 0 1px lightgray;
+	box-shadow: 0 0 0 1px #ebebeb;
 	background-image: repeating-linear-gradient( to bottom, transparent 0 9px, #f1f1f1 0px 10px );
 }
 
@@ -94,7 +93,7 @@
 
 .table__info {
 	width: 160px;
-	box-shadow: 0 0 0 1px lightgray;
+	box-shadow: 0 0 0 1px #ebebeb;
 	padding: 6px;
 	display: flex;
 	flex-direction: column;
@@ -104,7 +103,7 @@
 .table__info--empty {
 	width: 80px;
 	background: #fff;
-	box-shadow: 1px 0 0 1px lightgrey;
+	box-shadow: 1px 0 0 1px #ebebeb;
 	position: sticky;
 	left: 0;
 	top: 0;
