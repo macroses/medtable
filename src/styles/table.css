@@ -38,6 +38,10 @@
 	position: relative;
 }
 
+.table__doctor-col:nth-child(even) {
+	background-color: #fcfcfc;
+}
+
 .table__doctor-hour {
 	box-shadow: 0 0 0 1px #ebebeb;
 	background-image: repeating-linear-gradient( to bottom, transparent 0 9px, #f1f1f1 0px 10px );
