@@ -1,18 +1,24 @@
 .table {
 	--draggable-block-height: 0;
 	width: 100%;
+	overflow: auto;
 }
 
 .table__content {
 	display: flex;
-	overflow: auto;
 	padding: 1px;
 }
 
 .table__hours {
 	display: grid;
 	grid-auto-rows: 120px;
-	width: 80px;
+	min-width: 80px;
+	position: sticky;
+	background-color: #fff;
+	box-shadow: 1px 0 0 1px lightgray;
+	left: 0;
+	top: 0;
+	z-index: 1;
 }
 
 .table__hours-value {
@@ -92,10 +98,17 @@
 	padding: 6px;
 	display: flex;
 	flex-direction: column;
+	flex-shrink: 0;
 }
 
 .table__info--empty {
 	width: 80px;
+	background: #fff;
+	box-shadow: 1px 0 0 1px lightgrey;
+	position: sticky;
+	left: 0;
+	top: 0;
+	z-index: 1;
 }
 
 .table__info-name {
