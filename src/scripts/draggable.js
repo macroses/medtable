@@ -60,9 +60,14 @@ function checkIntersection (draggingElement) {
 
 function handleDrop(e) {
   const dropRect = this.getBoundingClientRect();
-  const newTop = Math.round((e.clientY - dropRect.top) / 10) * 10 + 1;
+  let newTop = Math.round((e.clientY - dropRect.top) / 10) * 10 + 1;
 
   const draggingElement = document.querySelector('.dragging');
+
+  if (newTop < 0) {
+    newTop = 0;
+  }
+
   draggingElement.style.top = `${newTop}px`;
 
   tableDoctorCols.forEach((col) => {
@@ -78,16 +83,6 @@ function handleDragEnter() {
 
 function handleDragLeave() {
   this.classList.remove('active');
-}
-
-function handleDrag(e) {
-  const draggingElement = document.querySelector('.dragging');
-  const currentTop = parseInt(draggingElement.style.top);
-
-  const dragDistance = e.clientY - e.target.getBoundingClientRect().top;
-  const newTop = Math.round((currentTop + dragDistance) / 10) * 10;
-
-  draggingElement.style.top = `${newTop}px`;
 }
 
 function getDragAfterElement(container, y) {
@@ -113,7 +108,6 @@ function getDragAfterElement(container, y) {
 draggables.forEach((draggable) => {
   draggable.addEventListener('dragstart', handleDragStart);
   draggable.addEventListener('dragend', handleDragEnd);
-  draggable.addEventListener('drag', handleDrag);
 });
 
 tableDoctorCols.forEach((col) => {
