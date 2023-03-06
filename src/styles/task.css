@@ -87,6 +87,7 @@
 	opacity: 0;
 	visibility: hidden;
 	transition: visibility 0.2s, opacity 0.2s;
+	font-size: 13px;
 }
 
 .dragging-tooltip.active {

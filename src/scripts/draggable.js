@@ -66,8 +66,11 @@ function checkIntersection (draggingElement) {
 
   // проверка часа
   let hour = null;
+  let hourTop = null
+
   tableDoctorHours.forEach((hourElement) => {
     const hourRect = hourElement.getBoundingClientRect();
+    hourTop = hourRect.top
 
     if (
       draggingRect.top >= hourRect.top &&
@@ -79,7 +82,7 @@ function checkIntersection (draggingElement) {
 
   if (hour !== null) {
     draggingElement.querySelector('.dragging-tooltip').classList.add('active')
-    draggingElement.querySelector('.dragging-tooltip').innerHTML = hour;
+    draggingElement.querySelector('.dragging-tooltip').innerText = hour;
   }
 }
 
