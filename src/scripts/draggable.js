@@ -2,6 +2,8 @@ const draggables = document.querySelectorAll('.draggable');
 const tableDoctorCols = document.querySelectorAll('.table__doctor-col');
 const tableDoctorHours = document.querySelectorAll('.table__doctor-hour');
 const blankCanvas = document.createElement('canvas'); // удаляем тень для перетаскиваемого элемента
+const leftArea = document.querySelector('.left-area');
+const rightArea = document.querySelector('.right-area');
 blankCanvas.style.opacity = '0';
 
 
@@ -11,6 +13,7 @@ function handleDragStart(event) {
   // теперь снепшот перетаскиваемого элемента не виден
   event.dataTransfer.setDragImage(blankCanvas, 0, 0);
   document.body.appendChild(blankCanvas);
+
 }
 
 function handleDragEnd() {
@@ -33,6 +36,9 @@ function handleDragOver(e) {
   const newTop = Math.round((e.clientY - dropRect.top) / 10) * 10 + 1;
 
   draggingElement.style.top = `${newTop}px`;
+
+  leftArea.classList.add('active')
+  rightArea.classList.add('active')
 
   if (afterElement == null) {
     this.appendChild(draggingElement);
@@ -82,7 +88,7 @@ function checkIntersection (draggingElement) {
 
   if (hour !== null) {
     draggingElement.querySelector('.dragging-tooltip').classList.add('active')
-    draggingElement.querySelector('.dragging-tooltip').innerText = hour;
+    draggingElement.querySelector('.dragging-tooltip').innerText = `Время: ${hour}`;
   }
 }
 
@@ -92,6 +98,9 @@ function handleDrop(e) {
 
   let newTop = Math.round((e.clientY - dropRect.top) / 10) * 10 + 1;
   draggingElement.style.top = `${newTop}px`;
+
+  leftArea.classList.remove('active')
+  rightArea.classList.remove('active')
 
   tableDoctorCols.forEach((col) => {
     col.classList.remove('active');

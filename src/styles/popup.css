@@ -1,0 +1,24 @@
+.dragging-tooltip {
+	position: absolute;
+	bottom: calc(100% + 8px);
+	width: auto;
+	padding: 4px;
+	background: #fff;
+	border: 1px solid #ebebeb;
+	border-radius: 4px;
+	color: #252525;
+	left: 0;
+	z-index: 30;
+	pointer-events: none;
+	opacity: 0;
+	visibility: hidden;
+	transition: visibility 0.2s, opacity 0.2s;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.dragging-tooltip.active {
+	opacity: 1;
+	visibility: visible;
+	box-shadow: 5px 5px 7px 0 rgba(0, 0,0, 0.3);
+}
