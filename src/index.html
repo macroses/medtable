@@ -120,7 +120,6 @@
           <div class="table__doctors">
             <!-- Области для перетягивания -->
             <div class="left-area"></div>
-            <div class="right-area"></div>
             <div class="table__doctor-col">
               <div class="draggable draggable--one" draggable="true" style="--draggable-block-height: 50px;">
                 <div class="dragging-tooltip"></div>
@@ -290,6 +289,10 @@
               <div class="table__doctor-hour" data-hour="10"></div>
               <div class="table__doctor-hour" data-hour="11"></div>
             </div>
+            <!-- Рендерить по условию.
+            Скрывать после дропа, так как в конце таблицы выделено место под область.
+            -->
+            <div class="right-area"></div>
           </div>
         </div>
       </div>
