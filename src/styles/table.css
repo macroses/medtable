@@ -203,3 +203,26 @@
 	opacity: 1;
 	visibility: visible;
 }
+
+/* специализации */
+.table__specialisations {
+	display: grid;
+	background-color: #fff;
+	gap: 1px;
+	font-size: 11px;
+	grid-template-columns: 80px repeat(auto-fill, 160px);
+	position: sticky;
+	top: 0;
+	z-index: 20;
+}
+
+.table__specialisation_item {
+	padding: 4px;
+	box-shadow: 0 0 0 1px #ebebeb;
+	background-color: #fcfcfc;
+	text-align: center;
+	font-weight: 500;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}

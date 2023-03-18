@@ -13,6 +13,14 @@
 <!-- при перемещении блока должны получать вертикальную колонку (врача) и атрибут часа (data-hour) -->
     <div class="wrapper">
       <div class="table">
+        <div class="table__specialisations">
+          <div class="table__specialisation_item"></div>
+          <!-- Для динамики прописываем количество объединенных колонок через span N -->
+          <div class="table__specialisation_item" style="grid-column: span 2">Вакцинация взрослые</div>
+          <div class="table__specialisation_item">Взрослые специалисты</div>
+          <div class="table__specialisation_item">Детская стоматология очень детская</div>
+          <div class="table__specialisation_item">Детские специалисты</div>
+        </div>
         <div class="table__head">
           <div class="table__info table__info--empty"></div>
           <div class="table__info">
