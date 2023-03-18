@@ -96,7 +96,7 @@
 	display: flex;
 	gap: 1px;
 	position: sticky;
-	top: 0;
+	top: 29px;
 	background: #fff;
 	z-index: 20;
 }
@@ -210,6 +210,7 @@
 	background-color: #fff;
 	gap: 1px;
 	font-size: 11px;
+	margin-bottom: 4px;
 	grid-template-columns: 80px repeat(auto-fill, 160px);
 	position: sticky;
 	top: 0;
